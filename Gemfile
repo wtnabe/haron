@@ -30,6 +30,7 @@ end
 
 group :development do
   gem 'debugger'
+  gem 'guard-livereload'
 end
 
 # To use ActiveModel has_secure_password
