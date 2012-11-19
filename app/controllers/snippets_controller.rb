@@ -15,10 +15,6 @@ class SnippetsController < ApplicationController
   def new
   end
 
-  # GET /snippets/1/edit
-  def edit
-  end
-
   # POST /snippets
   # POST /snippets.json
   def create

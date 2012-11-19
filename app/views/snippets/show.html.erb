@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Source:</b>
-  <%= @snippet.source %>
-</p>
+<table>
+  <tr>
+    <th>TagHelper code</th>
+    <th>HTML source</th>
+  </tr>
+  <tr>
+    <td><%= render_cell :snippets, :edit %></td>
+    <td><%= render_cell :snippets, :show %></td>
+  </tr>
+</table>
 
-
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
 <%= link_to 'Back', snippets_path %>

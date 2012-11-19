@@ -16,4 +16,10 @@ class SnippetsCell < Cell::Rails
 
     render
   end
+
+  def show
+    @snippet = Snippet.find(params[:id])
+
+    render
+  end
 end
