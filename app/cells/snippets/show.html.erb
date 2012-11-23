@@ -1,7 +1,1 @@
-<%=
-   begin
-     eval(@snippet.source).to_str
-   rescue => e
-     e.to_s
-   end
- %>
+<%= @snippet.converted %>
