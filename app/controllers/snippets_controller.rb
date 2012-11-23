@@ -1,4 +1,11 @@
 class SnippetsController < ApplicationController
+  def index
+    respond_to { |format|
+      format.html { redirect_to :root }
+      format.json { not_found! :template => false }
+    }
+  end
+
   # GET /snippets/1
   # GET /snippets/1.json
   def show

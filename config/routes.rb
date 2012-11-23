@@ -1,8 +1,7 @@
 Haron::Application.routes.draw do
   root :to => 'index#index'
 
-  resources :snippets, :except => [:index, :edit]
-  get '/snippets' => redirect('/')
+  resources :snippets, :except => [:edit]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
