@@ -41,7 +41,7 @@ class SnippetsController < ApplicationController
         format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "new" }
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
       end
     end

@@ -118,7 +118,7 @@ describe SnippetsController do
         # Trigger the behavior that occurs when invalid params are submitted
         Snippet.any_instance.stub(:save).and_return(false)
         put :update, {:id => snippet.to_param, :snippet => { "source" => "invalid value" }}, valid_session
-        response.should render_template("edit")
+        response.should render_template("new")
       end
     end
   end
