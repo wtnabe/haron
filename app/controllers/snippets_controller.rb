@@ -30,7 +30,9 @@ class SnippetsController < ApplicationController
     respond_to do |format|
       if @snippet.save
         format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
-        format.json { render json: @snippet, status: :created, location: @snippet }
+        format.json {
+          render 'show', status: :created, location: @snippet
+        }
       else
         format.html { render action: "new" }
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class SnippetsController < ApplicationController
     respond_to do |format|
       if @snippet.update_attributes(params[:snippet])
         format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render 'show' }
       else
         format.html { render action: "new" }
         format.json { render json: @snippet.errors, status: :unprocessable_entity }

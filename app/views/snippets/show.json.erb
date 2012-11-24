@@ -1,0 +1,5 @@
+<%==
+  Hash[*(@snippet.attributes.keys + %w( converted status )).map { |key|
+        [key, @snippet.send(key)]
+         }.flatten].to_json
+%>
