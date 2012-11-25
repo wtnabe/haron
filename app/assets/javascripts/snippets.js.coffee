@@ -5,7 +5,20 @@
 * とりあえずキーボードから指が離れて500ms待つ
 ###
 class HaronListener
+  timeout_id: undefined
 
+  start: ->
+    area = $('textarea#snippet_source')
+    self = this
+    area.on 'keyup', (e) ->
+      self.timeout_id = setTimeout ->
+        (new HaronClient()).put()
+      , 500
+    area.on 'keydown', ->
+      self = this
+      clearTimeout self.timeout_id
+
+window.HaronListener = HaronListener
 
 ###*
 * APIにsourceを投げる
@@ -13,19 +26,11 @@ class HaronListener
 * それ以外だったらstatus lineに失敗のメッセージを出し、convertedは触らない
 ###
 class HaronClient
-  start: ->
-    self = this
-    if $('#html-source').length > 0
-      setTimeout ->
-        self.put()
-      , 1000
-
   put: ->
     self = this
     $.post location.pathname + '.json', @put_param(), (snippet) ->
       if snippet.status == 'success'
         self.update_html(snippet.converted)
-    @start()
 
   put_param: ->
     { '_method': 'put', 'snippet': {'source': @source()} }
@@ -45,4 +50,5 @@ window.HaronClient = HaronClient
 class HaronCache
 
 jQuery ->
-  (new HaronClient()).start()
+  if $('#html-source').length > 0
+    (new HaronListener()).start()
