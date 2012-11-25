@@ -32,8 +32,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'debugger'
-  gem 'guard-livereload'
+  gem 'debugger' unless Bundler::WINDOWS
+  gem 'guard-livereload' unless Bundler::WINDOWS
 end
 
 # To use ActiveModel has_secure_password
